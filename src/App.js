@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
+import { NavbarComps } from './components'
+import Home from './pages/Home'
+import Food from './pages/Food'
+import FoodDetail from './pages/FoodDetail';
+import Keranjang from './pages/Keranjang';
+import Sukses from './pages/Sukses';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+  render() {
+    
+    return (
+      <BrowserRouter>
+          <NavbarComps />
+          <main>
+            <Switch>
+              <Route path="/" component={Home} exact/>
+              <Route path="/food" component={Food} exact/>
+              <Route path="/food/:id" component={FoodDetail} exact/>
+              <Route path="/keranjang" component={Keranjang} exact/>
+              <Route path="/sukses" component={Sukses} exact/>
+            </Switch>
+          </main>
+      </BrowserRouter>
+    )
+  }
 }
-
-export default App;
